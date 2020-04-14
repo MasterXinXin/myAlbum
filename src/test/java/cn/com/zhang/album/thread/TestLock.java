@@ -17,14 +17,11 @@ public class TestLock {
         Done done1 = new Done(noneReetrantLock);//不可重入
         Done done2 = new Done(reetrantLock);//可重入
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    done1.doA();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        new Thread(()->{
+            try {
+                done1.doA();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }, "不可重入")
                 .start();
